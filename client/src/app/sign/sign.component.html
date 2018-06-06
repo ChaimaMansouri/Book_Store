@@ -1,0 +1,80 @@
+<div id="wrapper">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="home/container">Bookstore</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a routerLink="addgenre">Add Genre</a></li> 
+                  <li><a routerLink="book" >Add Book</a></li>  
+                  <li><a [routerLink]="['/login']">Logout</a></li>                   
+              </ul>
+            </div>
+
+      <div class="navbar-default sidebar" role="navigation">
+          <div class="sidebar-nav navbar-collapse">
+              <ul class="nav" id="side-menu">
+                  <li class="sidebar-search">
+                      <div class="input-group custom-search-form">
+                          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchBook">
+                          <span class="input-group-btn">
+                              <button class="btn btn-default" type="button" [routerLink]="['/home/container/bookSearch',searchBook]">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </span>
+                      </div>
+                      <!-- /input-group -->
+                  </li>
+                  <li>
+                      <a [routerLink]="['/home/container']"><i class="fa fa-files-o fa-fw" ></i> Genre<span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level">
+                          <li *ngFor="let genre of genres">
+                              
+                                <a><div class="row">
+                                <div class="col-md-8" id={{genre._id}}>
+                                    <div *ngIf="id!==genre._id" [routerLink]="['/home/container',genre.name]">
+                                            {{genre.name}}  
+                                    </div>
+                                    <div *ngIf="id==genre._id" >
+                                       <input class="form-control" [(ngModel)]="genre.name" (keyup)="genreUpdate($event,genre.name)">
+                                </div>
+                         
+                                </div>
+                                <div class="col-md-4">
+                                <i class="fa fa-edit" (click)="updateGenre(genre._id)" ></i>
+                                <i class="fa fa-trash-o"  [routerLink]="['/home/container']"(click)="deleteGenre(genre._id,genre.name)"></i>
+                                </div> 
+                            </div></a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+  <div id="page-wrapper">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+            
+                <router-outlet></router-outlet>
+               
+            </div>
+              <!-- /.col-lg-12 -->
+          </div>
+          <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+  </div>
+  <!-- /#page-wrapper -->
+
+</div>

@@ -1,0 +1,103 @@
+
+<br>
+<div class="panel panel-default" *ngIf="!id">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add Book</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+      <form (ngSubmit)="add_book()">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" [(ngModel)]="book.title" placeholder="Title" name="title" required>
+        </div>
+        <div class="form-group">
+          <label>Genre</label>
+          <select [(ngModel)]="book.genre" class="form-control" name="genre" required>
+            <option *ngFor="let genre of genres" value="{{genre.name}}">{{genre.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Author</label>
+          <input type="text" class="form-control" [(ngModel)]="book.author" placeholder="Author" name="author" required>
+        </div>
+        <div class="form-group">
+          <label>Publisher</label>
+          <input type="text" class="form-control" [(ngModel)]="book.publisher" placeholder="Publisher"  name="publisher" required>
+        </div>
+        <div class="form-group">
+          <label>Pages</label>
+          <input type="text" class="form-control" [(ngModel)]="book.pages" placeholder="Pages" name="pages" required>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" [(ngModel)]="book.description" placeholder="Description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Image URL</label>
+          <input type="text" class="form-control" [(ngModel)]="book.image_url" placeholder="Image URL" name="image_url" required>
+        </div>
+        <div class="form-group">
+          <label>Buy URL</label>
+          <input type="text" class="form-control" [(ngModel)]="book.buy_url" placeholder="Buy URL" name="buy_url" required>
+        </div>
+       
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<div class="panel panel-default" *ngIf="id && updatedBook">
+  <div class="panel-heading">
+    <h3 class="panel-title">Update Book</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+      <form (ngSubmit)="update_book()">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" [(ngModel)]="updatedBook.title" placeholder="Title" name="title" required>
+        </div>
+        <div class="form-group">
+          <label>Genre</label>
+          <select [(ngModel)]="updatedBook.genre" class="form-control" name="genre" required>
+            <option *ngFor="let genre of genres" value="{{genre.name}}">{{genre.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Author</label>
+          <input type="text" class="form-control" [(ngModel)]="updatedBook.author" placeholder="Author" name="author" required>
+        </div>
+        <div class="form-group">
+          <label>Publisher</label>
+          <input type="text" class="form-control" [(ngModel)]="updatedBook.publisher" placeholder="Publisher"  name="publisher" required>
+        </div>
+        <div class="form-group">
+          <label>Pages</label>
+          <input type="text" class="form-control" [(ngModel)]="updatedBook.pages" placeholder="Pages" name="pages" required>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" [(ngModel)]="updatedBook.description" placeholder="Description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Image URL</label>
+          <input type="text" class="form-control" [(ngModel)]="updatedBook.image_url" placeholder="Image URL" name="image_url" required>
+        </div>
+        <div class="form-group">
+          <label>Buy URL</label>
+          <input type="text" class="form-control" [(ngModel)]="updatedBook.buy_url" placeholder="Buy URL" name="buy_url" required>
+        </div>
+       
+        <button type="submit" class="btn btn-default">Update</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
